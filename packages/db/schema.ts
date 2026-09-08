@@ -2,7 +2,7 @@ import { pgTable, varchar, uuid, timestamp, pgEnum, uniqueIndex, integer, check 
 import { sql } from "drizzle-orm";
 import { boolean } from "drizzle-orm/cockroach-core";
 
-const memberRoles = pgEnum("member_role", ["admin", "member"]);
+export const memberRoles = pgEnum("member_role", ["admin", "member"]);
 
 export const users = pgTable("users", {
     id: uuid("id").primaryKey().default(sql`uuidv7()`),
