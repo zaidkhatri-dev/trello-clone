@@ -1,4 +1,5 @@
 import {WebSocketServer} from "ws";
+import { db } from "db/client"
 
 const server = new WebSocketServer({port: 3002})
 
