@@ -3,14 +3,14 @@ import { prisma } from "db/client";
 
 const app = express();
 
-app.post("/user", async (req, res) => {
-  await prisma.user.create({
-    data: {
-      name: req.body.name,
-      email: req.body.email,
-    },
-  });
-  res.send("User created");
+app.get("/user", async (req, res) => {
+  // const user = await prisma.user.create({
+  //   data: {
+  //     name: "demo",
+  //     email: "demo@gmail.com",
+  //   },
+  // });
+  res.send("hello");
 });
 
 app.listen(3000, () => {
