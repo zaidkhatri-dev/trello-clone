@@ -15,7 +15,8 @@ export const users = pgTable("users", {
     profilePictureUrl: varchar("profile_picture_url", { length: 255 }),
     ...timestamps
 }, (table) => [
-    uniqueIndex('email_lower_idx').on(sql`lower(${table.email})`) 
+    uniqueIndex('email_lower_idx').on(sql`lower(${table.email})`),
+    check("valid_email_format", sql`${table.email} ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'`) 
 ]);
 
 export const organizations = pgTable("organizations", {
