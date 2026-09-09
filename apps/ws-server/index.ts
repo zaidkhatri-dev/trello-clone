@@ -1,16 +1,9 @@
-import {WebSocketServer} from "ws";
-import { db } from "db/client"
+import { WebSocketServer } from "ws";
 
-const server = new WebSocketServer({port: 3002})
-
-interface Users {
-    
-}
-
-const USERS = new Map();
+const server = new WebSocketServer({ port: 3002 })
 
 server.on("connection", (ws) => {
-    
+
     ws.on("message", (message) => {
         console.log(message);
     })
