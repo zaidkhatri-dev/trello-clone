@@ -2,6 +2,8 @@ import 'dotenv/config';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { Pool } from 'pg';
 
+let pool: Pool | null = null
+
 export const client = ({
     connectionString,
     maxPoolSize = 10,
@@ -17,7 +19,7 @@ export const client = ({
     connectionTimeoutMillis?: number,
     environment: 'production' | 'development'
 }) => {
-    const pool = new Pool({
+    pool = new Pool({
         connectionString,
         max: maxPoolSize,
         min: minPoolSize,
@@ -27,5 +29,13 @@ export const client = ({
         ssl: environment === 'production' ? true : false
     })
 
-    return drizzle({ client: pool })
+    const db = drizzle({ client: pool })
+
+    return db
+}
+
+export const closeDBConnection = async () => {
+    if (pool) {
+        await pool.end()   
+    }    
 }

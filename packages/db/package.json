@@ -14,7 +14,7 @@
     "tsx": "^4.23.13"
   },
   "peerDependencies": {
-    "typescript": "^5"
+    "typescript": "^7"
   },
   "dependencies": {
     "dotenv": "^17.4.2",
