@@ -1,5 +1,5 @@
 import express from "express";
-import { prisma } from "db/client";
+import { client } from "db/client";
 
 const app = express();
 

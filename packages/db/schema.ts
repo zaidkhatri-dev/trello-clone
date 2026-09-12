@@ -1,4 +1,4 @@
-import { pgTable, varchar, uuid, timestamp, pgEnum, uniqueIndex, integer, check, text, boolean } from "drizzle-orm/pg-core";
+import { pgTable, uuid, timestamp, pgEnum, uniqueIndex, integer, check, text, boolean } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
 
 export const memberRoles = pgEnum("member_role", ["admin", "member"]);
@@ -10,9 +10,9 @@ const timestamps = {
 
 export const users = pgTable("users", {
     id: uuid("id").primaryKey().default(sql`uuidv7()`),
-    email: varchar("email", { length: 255 }).notNull(),
-    username: varchar("username", { length: 255 }),
-    profilePictureUrl: varchar("profile_picture_url", { length: 255 }),
+    email: text("email").notNull(),
+    username: text("username"),
+    profilePictureUrl: text("profile_picture_url"),
     ...timestamps
 }, (table) => [
     uniqueIndex('email_lower_idx').on(sql`lower(${table.email})`),
@@ -21,8 +21,8 @@ export const users = pgTable("users", {
 
 export const organizations = pgTable("organizations", {
     id: uuid("id").primaryKey().default(sql`uuidv7()`),
-    name: varchar("name", { length: 255 }).notNull(),
-    description: varchar("description", { length: 1000 }),
+    name: text("name").notNull(),
+    description: text("description"),
     ...timestamps
 });
 
@@ -39,15 +39,15 @@ export const membership = pgTable("membership", {
 
 export const boards = pgTable("boards", {
     id: uuid("id").primaryKey().default(sql`uuidv7()`),
-    title: varchar("title", { length: 255 }).notNull(),
-    description: varchar("description", { length: 1000 }),
+    title: text("title").notNull(),
+    description: text("description"),
     organizationId: uuid("organization_id").notNull().references(() => organizations.id, { onDelete: "cascade" }),
     ...timestamps
 });
 
 export const sections = pgTable("sections", {
     id: uuid("id").primaryKey().default(sql`uuidv7()`),
-    title: varchar("title", { length: 255 }).notNull(),
+    title: text("title").notNull(),
     boardId: uuid("board_id").notNull().references(() => boards.id, { onDelete: "cascade" }),
     order: integer("order").notNull().default(0),
     ...timestamps
@@ -57,7 +57,7 @@ export const sections = pgTable("sections", {
 
 export const issues = pgTable("issues", {
     id: uuid("id").primaryKey().default(sql`uuidv7()`),
-    title: varchar("title", { length: 255 }).notNull(),
+    title: text("title").notNull(),
     description: text("description"),
     sectionId: uuid("section_id").notNull().references(() => sections.id, { onDelete: "restrict" }),
     boardId: uuid("board_id").notNull().references(() => boards.id, { onDelete: "cascade" }),
