@@ -25,16 +25,6 @@
     // Some stricter flags (disabled by default)
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "noPropertyAccessFromIndexSignature": false,
-
-    "baseUrl": "./src",
-    "paths": {
-      "@/*": ["*"],
-      "@config/*": ["config/*"],
-      "@constants/*": ["shared/constants/*"],
-      "@middlewares/*": ["shared/middlewares/*"],
-      "@utils/*": ["shared/utils/*"],
-      "@classes/*": ["shared/classes/*"]
-    }
+    "noPropertyAccessFromIndexSignature": false
   }
 }

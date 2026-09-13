@@ -1,11 +1,12 @@
 {
-  "name": "db",
+  "name": "@repo/db",
   "module": "index.ts",
   "type": "module",
   "private": true,
   "exports": {
     "./client": "./index.ts",
-    "./schema": "./schema.ts"
+    "./schema": "./schema.ts",
+    "./error": "./error.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",

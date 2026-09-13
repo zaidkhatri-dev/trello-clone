@@ -1,8 +1,12 @@
 {
-  "name": "ws-server",
+  "name": "@repo/validation",
   "module": "index.ts",
   "type": "module",
   "private": true,
+  "exports": {
+    "./error": "./error.ts",
+    "./schemas/*": "./schemas/*"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
@@ -10,7 +14,6 @@
     "typescript": "^7"
   },
   "dependencies": {
-    "@types/ws": "^8.18.1",
-    "ws": "^8.21.3"
+    "zod": "^4.6.4"
   }
 }

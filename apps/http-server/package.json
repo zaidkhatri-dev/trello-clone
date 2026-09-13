@@ -11,9 +11,9 @@
     "typescript": "^7"
   },
   "dependencies": {
-    "db": "*",
+    "@repo/db": "workspace:*",
+    "@repo/validation": "workspace:*",
     "express": "^5.2.1",
-    "error": "*",
     "zod": "^4.6.2"
   }
 }
