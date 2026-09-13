@@ -39,7 +39,7 @@ export const globalErrorHandler = (err: Error, req: Request, res: Response, next
         statusCode = err.statusCode
     }
 
-    if (message == null || statusCode == null || statusCode == 500){
+    if (message == null || statusCode == null){
         console.error("[UNEXPECTED ERROR]", err)
 
         message = env.NODE_ENV === "development" ? err.message : "Something went wrong"
