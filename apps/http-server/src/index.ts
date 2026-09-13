@@ -1,6 +1,7 @@
 import "dotenv/config"
-import app from "./app";
 import { env } from "@config/env";
+
+import app from "./app";
 import { GRACEFUL_SHUTDOWN_TIMEOUT } from "@constants/app";
 import { isShuttingDown, setShuttingDown } from "./shutdown";
 import { closeDBConnection } from "db/client";
