@@ -12,4 +12,10 @@ class AppError extends Error {
     }
 }
 
-export { AppError }
+class ConfigurationError extends AppError {
+    constructor(message: string){
+        super(message, 500, false)
+    }
+}
+
+export { AppError, ConfigurationError }

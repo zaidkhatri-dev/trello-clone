@@ -5,6 +5,7 @@
   "private": true,
   "devDependencies": {
     "@types/bun": "latest",
+    "@types/dotenv": "^8.2.3",
     "@types/express": "^5.0.6"
   },
   "peerDependencies": {
@@ -13,6 +14,7 @@
   "dependencies": {
     "@repo/db": "workspace:*",
     "@repo/validation": "workspace:*",
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "zod": "^4.6.2"
   }
